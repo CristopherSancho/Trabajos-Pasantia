@@ -7,6 +7,7 @@ package com.excelprueba;
 
 import java.io.FileOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -21,13 +22,22 @@ public class Main {
         Workbook book = new HSSFWorkbook();
         Sheet sheet = book.createSheet("Hola Java");
         
-        Row row = sheet.createRow(0);
+        Row rowTitulo = sheet.createRow(0);
+        rowTitulo.createCell(0).setCellValue("Nombre");
+        rowTitulo.createCell(1).setCellValue("Edad");
+        rowTitulo.createCell(2).setCellValue("Genero");
+        rowTitulo.createCell(3).setCellValue("Casado");
+        rowTitulo.createCell(4).setCellValue("Total");
+        
+        Row row = sheet.createRow(1);
         row.createCell(0).setCellValue("Maria Palomeque");
         row.createCell(1).setCellValue(15);
         row.createCell(2).setCellValue("Mujer");
         row.createCell(3).setCellValue(true);
+        Cell celda = row.createCell(4);
+        celda.setCellFormula(String.format("b2+b3", ""));
         
-        Row rowone = sheet.createRow(1);
+        Row rowone = sheet.createRow(2);
         rowone.createCell(0).setCellValue("Jose Duran");
         rowone.createCell(1).setCellValue(25);
         rowone.createCell(2).setCellValue("Masculino");
