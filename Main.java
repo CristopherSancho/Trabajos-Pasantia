@@ -7,6 +7,7 @@ package com.excelprueba;
 
 import java.io.FileOutputStream;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
@@ -19,6 +20,18 @@ public class Main {
   
         Workbook book = new HSSFWorkbook();
         Sheet sheet = book.createSheet("Hola Java");
+        
+        Row row = sheet.createRow(0);
+        row.createCell(0).setCellValue("Maria Palomeque");
+        row.createCell(1).setCellValue(15);
+        row.createCell(2).setCellValue("Mujer");
+        row.createCell(3).setCellValue(true);
+        
+        Row rowone = sheet.createRow(1);
+        rowone.createCell(0).setCellValue("Jose Duran");
+        rowone.createCell(1).setCellValue(25);
+        rowone.createCell(2).setCellValue("Masculino");
+        rowone.createCell(3).setCellValue(false);
 
         try {
             FileOutputStream fileout = new FileOutputStream("Excel.xls");
